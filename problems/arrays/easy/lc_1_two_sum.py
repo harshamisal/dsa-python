@@ -17,14 +17,23 @@ Space Complexity: O(n)
 """
 
 class Solution:
+
+    # # brute force
+    # def twoSum(nums, target):
+    #     for i in range(len(nums)):
+    #         for j in range(i + 1, len(nums)):
+    #             if nums[i] + nums[j] == target:
+    #                 return [i, j]
+    
+    # hashmap
     def twoSum(self, nums, target):
-        seen = {}
+        prevMap = {}
 
         for i, num in enumerate(nums):
-            complement = target - num
-            if complement in seen:
-                return [seen[complement], i]
-            seen[num] = i
+            diff = target - num
+            if diff in prevMap:
+                return [prevMap[diff], i]
+            prevMap[num] = i
 
 obj = Solution()
 
